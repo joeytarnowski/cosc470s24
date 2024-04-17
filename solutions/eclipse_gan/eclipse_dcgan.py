@@ -98,7 +98,7 @@ discriminator = define_discriminator()
 gan_model = define_gan(generator, discriminator)
 
 # Train the GAN
-def train_gan(generator, discriminator, gan_model, dataset, latent_dim, n_epochs=100, n_batch=128):
+def train_gan(generator, discriminator, gan_model, dataset, latent_dim, n_epochs=200, n_batch=128):
     bat_per_epo = int(len(dataset) / n_batch)
     half_batch = int(n_batch / 2)
     for i in range(n_epochs):
@@ -152,7 +152,7 @@ def summarize_performance(epoch, g_model, d_model, dataset, latent_dim, n_sample
 	save_plot(x_fake, epoch)
 	# save the generator model tile file
 	filename = 'generator_model_%03d.h5' % (epoch+1)
-	g_model.save(f'/Python/470/eclipse_gan/model/{filename}')
+	g_model.save(f'/Python/470/eclipse_gan/models/{filename}')
 
 # create and save a plot of generated images
 def save_plot(examples, epoch, n=7):
@@ -168,7 +168,7 @@ def save_plot(examples, epoch, n=7):
 		plt.imshow(examples[i])
 	# save plot to file
 	filename = 'generated_plot_e%03d.png' % (epoch+1)
-	plt.savefig(f'/Python/470/eclipse_gan/model/{filename}')
+	plt.savefig(f'/Python/470/eclipse_gan/pictures/{filename}')
 	plt.close()
 
 # Train the GAN model
